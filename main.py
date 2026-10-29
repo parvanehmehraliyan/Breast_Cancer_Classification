@@ -48,6 +48,10 @@ model.fit(X_train, y_train)
 # Make predictions on the test set
 y_pred = model.predict(X_test)
 
+# Convert predicted labels into class names
+class_names = data.target_names
+predicted_names = class_names[y_pred]
+
 # Calculate evaluation metrics for malignant cases
 accuracy = accuracy_score(y_test, y_pred)
 recall = recall_score(y_test, y_pred, pos_label=0)
@@ -68,3 +72,18 @@ print("CV Scores:", cv_scores)
 # Display the confusion matrix
 print("Confusion Matrix:")
 print(confusion)
+
+# Display the first 5 predicted class names
+print("Predicted classes:", predicted_names[:5])
+
+# Display the first 5 actual class names
+actual_names = class_names[y_test]
+print("Actual classes:", actual_names[:5])
+
+# Count the correct predictions
+correct_count = sum(predicted_names[:5] == actual_names[:5])
+print("Correct predictions:", correct_count)
+
+# Calculate the accuracy of the first 5 predictions
+accuracy_5 = (correct_count / 5) * 100
+print("Accuracy of first 5 predictions:", accuracy_5, "%")
