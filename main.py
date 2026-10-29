@@ -85,5 +85,6 @@ correct_count = sum(predicted_names[:5] == actual_names[:5])
 print("Correct predictions:", correct_count)
 
 # Calculate the accuracy of the first 5 predictions
-accuracy_5 = (correct_count / 5) * 100
+sample_count = len(predicted_names[:5])
+accuracy_5 = (correct_count / sample_count) * 100
 print("Accuracy of first 5 predictions:", accuracy_5, "%")
