@@ -3,6 +3,7 @@
 from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import cross_val_score
 from sklearn.metrics import (
     accuracy_score,
     recall_score,
@@ -28,6 +29,20 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 # Create and train the Random Forest model
 model = RandomForestClassifier(random_state=42)
+
+# Evaluate the model using 5-fold cross-validation
+cv_scores = cross_val_score(
+    model,
+    X_train,
+    y_train,
+    cv=5,
+    scoring="accuracy"
+)
+
+# Calculate the mean cross-validation accuracy
+cv_mean = cv_scores.mean()
+
+# Train the model on the training data
 model.fit(X_train, y_train)
 
 # Make predictions on the test set
@@ -47,6 +62,8 @@ print("Accuracy:", accuracy)
 print("Recall:", recall)
 print("F1 Score:", f1)
 print("Precision:", precision)
+print("CV Mean:", cv_mean)
+print("CV Scores:", cv_scores)
 
 # Display the confusion matrix
 print("Confusion Matrix:")
