@@ -92,5 +92,5 @@ print("Correct predictions:", correct_count)
 # Calculate the accuracy of the first 5 predictions
 sample_count = len(predicted_names[:n_samples])
 accuracy_5 = (correct_count / sample_count) * 100
-print("Accuracy of first 5 predictions:", accuracy_5, "%")
+print(f"Accuracy of first {n_samples} predictions:", accuracy_5, "%")
 
