@@ -73,18 +73,24 @@ print("CV Scores:", cv_scores)
 print("Confusion Matrix:")
 print(confusion)
 
+# Number of samples to compare
+n_samples = 5
+
 # Display the first 5 predicted class names
-print("Predicted classes:", predicted_names[:5])
+print("Predicted classes:", predicted_names[:n_samples])
 
 # Display the first 5 actual class names
 actual_names = class_names[y_test]
-print("Actual classes:", actual_names[:5])
+print("Actual classes:", actual_names[:n_samples])
 
 # Count the correct predictions
-correct_count = sum(predicted_names[:5] == actual_names[:5])
+correct_count = sum(
+    predicted_names[:n_samples] == actual_names[:n_samples]
+)
 print("Correct predictions:", correct_count)
 
 # Calculate the accuracy of the first 5 predictions
-sample_count = len(predicted_names[:5])
+sample_count = len(predicted_names[:n_samples])
 accuracy_5 = (correct_count / sample_count) * 100
 print("Accuracy of first 5 predictions:", accuracy_5, "%")
+
